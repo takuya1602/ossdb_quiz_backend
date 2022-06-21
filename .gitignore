@@ -2,8 +2,8 @@ __pycache__
 db.sqlite3
 DS_Store
 settings_local.py
-settings_common.py
 .env
 .venv
 output.txt
 html
+questions.json

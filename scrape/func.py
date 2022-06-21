@@ -22,17 +22,17 @@ def get_sub_category_from_soup(soup: BeautifulSoup) -> str:
     if match := re.search(
         r"「.+ - (.+)[\(|（].+[\(|（].+[\)|）].+[\(|（].+[\)|）].+[\)|）]」", h2
     ):
-        sub_category = match.group(1)
+        sub_category = match.group(1).strip()
     elif match := re.search(r"「.+ - (.+)[\(|（].+[\(|（].+[\)|）].+[\)|）]」", h2):
-        sub_category = match.group(1)
+        sub_category = match.group(1).strip()
     elif match := re.search(r"「.+ - (.+)[\(|（].+[\)|）] *」", h2):
-        sub_category = match.group(1)
+        sub_category = match.group(1).strip()
     elif match := re.search(r"「.+-(.+)-.+」", h2):
-        sub_category = match.group(1)
+        sub_category = match.group(1).strip()
     elif match := re.search(r"「(.+)[\(|（].+[\)|）] *」", h2):
-        sub_category = match.group(1)
+        sub_category = match.group(1).strip()
     elif match := re.search(r"「.+ - (.+)」", h2):
-        sub_category = match.group(1)
+        sub_category = match.group(1).strip()
     else:
         sub_category = "no_match"
     return sub_category
@@ -80,6 +80,5 @@ def get_commentary_and_answer_from_soup(soup: BeautifulSoup) -> tuple[str, list[
         answer = ["no_match"]
     if near_answer != "":
         answer = re.findall(r"[A-E]", near_answer)
-    print("near_answer: ", near_answer)
 
     return div, answer
